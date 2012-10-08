@@ -15,7 +15,23 @@ grunt.loadNpmTasks('grunt-jsmin-sourcemap');
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
-_(Coming soon)_
+`grunt-jsmin-sourcemap` is registered under the `jsmin-sourcemap` task. Your initConfig should look similar to this:
+```js
+grunt.initConfig({
+  'jsmin-sourcemap': {
+    all: {
+      // Source files to concatenate and minify (also accepts a string and minimatch items)
+      src: ['public/js/jquery.js', 'public/js/underscore.js'],
+
+      // Destination for concatenated/minified JavaScript
+      dest: 'dist/js/all.min.js',
+
+      // Destination for sourcemap of minified JavaScript
+      destMap: 'dist/js/all.js.map'
+    }
+  }
+});
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt][grunt] and test via `npm test`.
