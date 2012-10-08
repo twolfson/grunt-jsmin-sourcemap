@@ -2,6 +2,13 @@
 
 Grunt task for JSMin and sourcemap
 
+## Demos
+The demos in the [node-jsmin-sourcemap](https://github.com/twolfson/node-jsmin-sourcemap), what makes this tick, are hosted on Plunker for your testing and enjoyment.
+
+- Basic [http://embed.plnkr.co/mGHUpe](http://embed.plnkr.co/mGHUpe)
+- jQuery [http://embed.plnkr.co/JyNn5e](http://embed.plnkr.co/JyNn5e)
+- Multi [http://embed.plnkr.co/FPkQx6](http://embed.plnkr.co/FPkQx6)
+
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-jsmin-sourcemap`
 
