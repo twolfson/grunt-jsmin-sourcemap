@@ -27,7 +27,7 @@
     "node": ">=0.6"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt --base ./test/ --config ./test/grunt.js"
   },
   "dependencies": {
     "grunt": "~0.3.12",
