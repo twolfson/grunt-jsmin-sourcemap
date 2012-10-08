@@ -21,14 +21,26 @@ var grunt = require('grunt');
 */
 
 exports['jsmin-sourcemap'] = {
-  setUp: function(done) {
+  setUp: function (done) {
     // setup here
     done();
   },
-  'helper': function(test) {
+  'jsmin-sourcemap': function (test) {
     test.expect(1);
-    // tests here
-    test.equal(grunt.helper('jsmin-sourcemap'), 'jsmin-sourcemap!!!', 'should return the correct value.');
+
+    // test.equal(grunt.helper('jsmin-sourcemap'), 'jsmin-sourcemap!!!', 'should return the correct value.');
+
+    test.ok(1);
+    // A single file
+      // processed via JSMin
+        // outputs proper minified code
+        // as well as a sourcemap
+
+    // Multiple files
+      // processed via JSMin
+        // output proper minified code
+        // as well as a sourcemap
+
     test.done();
   }
 };

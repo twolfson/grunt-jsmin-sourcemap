@@ -30,12 +30,17 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt": "~0.3.12"
+    "grunt": "~0.3.12",
+    "jsmin-sourcemap": "~0.9.3"
   },
   "devDependencies": {
     "grunt": "~0.3.12"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "grunt",
+    "jsmin",
+    "sourcemap",
+    "minify"
   ]
 }
