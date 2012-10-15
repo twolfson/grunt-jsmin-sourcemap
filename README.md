@@ -1,6 +1,15 @@
 # grunt-jsmin-sourcemap
 
-Grunt task for JSMin and sourcemap
+Grunt task for JSMin and source maps.
+
+## Synopsis
+[Grunt](https://github.com/gruntjs/grunt/) is a node.js based CLI build tool.
+
+[JSMin](http://www.crockford.com/javascript/jsmin.html) is a JavaScript minifier that removes whitespace and comments.
+
+[Source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) enables developers to view and interact with minified JavaScript as if it were unminified (providing useful line errors and easier debugging).
+
+When you combine all three of these, you get a grunt plugin that is your new best debugging friend.
 
 ## Demos
 The demos in the [node-jsmin-sourcemap](https://github.com/twolfson/node-jsmin-sourcemap), what makes this tick, are hosted on Plunker for your testing and enjoyment.
