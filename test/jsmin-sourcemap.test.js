@@ -26,25 +26,34 @@ exports['jsmin-sourcemap'] = {
     done();
   },
   'jsmin-sourcemap': function (test) {
-    test.expect(4);
+    test.expect(6);
 
     // A single file (jquery.js)
       // processed via JSMin (grunt jsmin-sourcemap:single)
       var actualSingle = grunt.file.read('actual/jquery.min.js'),
           expectedSingle = grunt.file.read('actual/jquery.min.js'),
-          expectedSingleMap = grunt.file.read('actual/jquery.js.map');
+          expectedSingleMap = grunt.file.read('actual/jquery.js.map'),
+          singleMapRegExp = /\/\/\s*@sourceMappingURL\s*=\s*jquery.js.map/,
+          singleMapDeclarativeExists = singleMapRegExp.test(actualSingle);
         // outputs proper minified code
         test.strictEqual(actualSingle, expectedSingle, ' properly minifies a single file');
+        // which points to the map file
+        test.ok(singleMapDeclarativeExists, ' points to the proper map location for the single file');
         // as well as a sourcemap
         test.ok(expectedSingleMap, ' generates a source map for a single file');
+
 
     // Multiple files (jquery.js + underscore.js)
       // processed via JSMin (grunt jsmin-sourcemap:multi)
       var actualMulti = grunt.file.read('actual/multi.min.js'),
           expectedMulti = grunt.file.read('actual/multi.min.js'),
-          expectedMultiMap = grunt.file.read('actual/multi.js.map');
+          expectedMultiMap = grunt.file.read('actual/multi.js.map'),
+          multiMapRegExp = /\/\/\s*@sourceMappingURL\s*=\s*multi.js.map/,
+          multiMapDeclarativeExists = multiMapRegExp.test(actualMulti);
         // outputs proper minified code
         test.strictEqual(actualMulti, expectedMulti, ' properly minifies multiple files');
+        // which points to the map file
+        test.ok(multiMapDeclarativeExists, ' points to the proper map location for the multiple files');
         // as well as a sourcemap
         test.ok(expectedMultiMap, ' generates a source map for multiple files');
 
