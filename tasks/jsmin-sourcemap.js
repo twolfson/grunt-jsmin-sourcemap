@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     var code = retObj.code;
 
     // Append a sourceMappingURL to the code
-    code = code + '\n//@ sourceMappingURL=' + destFile;
+    code = code + '\n//@ sourceMappingURL=' + file.destMap;
 
     // Write out the code and map
     grunt.file.write(destFile, code);
