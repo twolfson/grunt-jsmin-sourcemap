@@ -23,11 +23,13 @@ module.exports = function (grunt) {
     // Grab the minified code
     var code = retObj.code;
 
+    var destMap = file.destMap || destFile + ".map";
+
     // Append a sourceMappingURL to the code
-    code = code + '\n//@ sourceMappingURL=' + file.destMap;
+    code = code + '\n//@ sourceMappingURL=' + destMap;
 
     // Write out the code and map
     grunt.file.write(destFile, code);
-    grunt.file.write(file.destMap, retObj.sourcemap);
+    grunt.file.write(destMap, retObj.sourcemap);
   });
 };
