@@ -1,59 +1,41 @@
 var grunt = require('grunt'),
     assert = require('assert');
 
-var commands = {
-  'A single file': function () {
-    // Generate paths for expected/actual files
-    var retObj = {
-          'expected': 'exepceted/jquery.min.js',
-          'actual': 'actual/jquery.min.js',
-          'actualMap': 'actual/jquery.js.map'
-        };
-    return retObj;
+var commands = {};
+function Suite() {
+  this.batches = [];
+}
+
+// Helper function to add new commands
+function addCommand(name, fn) {
+  commands[name] = fn;
+}
+function addCommandBatch(cmdObj) {
+  // Grab the keys of each of the items from the command object
+  var cmdNames = Object.getOwnPropertyNames(cmdObj);
+
+  // Add each of the items
+  cmdNames.forEach(function (name) {
+    addCommand(name, cmdObj[name]);
+  });
+}
+Suite.addCommand = addCommand;
+Suite.addCommandBatch = addCommandBatch;
+
+
+Suite.prototype = {
+  'addBatch': function (batch) {
+    // Add the batch to our list of batches
+    this.batches.push(batch);
   },
-  'processed via JSMin': function (topic) {
-    return topic;
+  'export': function () {
+    // Export the functions into a vows-like format
+
   },
-  'outputs properly minified code': function (topic) {
-    var expectedFile = grunt.file.read(topic.expected),
-        actualFile = grunt.file.read(topic.actual);
-    assert.strictEqual(expectedFile, actualFile, ' properly minifies files');
-  },
-  'properly points to the map file': function (topic) {
-    // This is handled by the outputs properly minified code portion
-    return true;
-  },
-  'as well as a sourcemap': function (topic) {
-    var actualFileMap = grunt.file.read(topic.actualMap);
-    assert.ok(actualFileMap, ' generates a source map for files');
+  'run': function () {
+    // Convert the item into a runnable format
   }
 };
-
-// var commands =
-// function Suite() {
-
-// }
-// Suite
-
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
-
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
 
 exports['jsmin-sourcemap'] = {
   setUp: function (done) {
