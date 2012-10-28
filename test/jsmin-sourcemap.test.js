@@ -26,19 +26,19 @@ exports['jsmin-sourcemap'] = {
     done();
   },
   'jsmin-sourcemap': function (test) {
-    test.expect(6);
+    test.expect(9);
 
-      // var expectedCompact = grunt.file.read('expected/compact.min.js'),
-      //     actualCompact = grunt.file.read('actual/compact.min.js'),
-      //     actualCompactMap = grunt.file.read('actual/compact.js.map'),
-      //     compactMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/compact.js.map/,
-      //     compactMapDeclarativeExists = singleMapRegExp.test(actualSingle);
-      //   // outputs proper minified code
-      //   test.strictEqual(actualCompact, expectedCompact, ' properly minifies a compact file');
-      //   // which points to the map file
-      //   test.ok(compactMapDeclarativeExists, ' points to the proper map location for the compact file');
-      //   // as well as a sourcemap
-      //   test.ok(actualCompactMap, ' generates a source map for a compact file');
+      var expectedCompact = grunt.file.read('expected/compact.min.js'),
+          actualCompact = grunt.file.read('actual/compact.min.js'),
+          actualCompactMap = grunt.file.read('actual/compact.min.js.map'),
+          compactMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/compact.min.js.map/,
+          compactMapDeclarativeExists = compactMapRegExp.test(actualCompact);
+        // outputs proper minified code
+        test.strictEqual(actualCompact, expectedCompact, ' properly minifies a compact file');
+        // which points to the map file
+        test.ok(compactMapDeclarativeExists, ' points to the proper map location for the compact file');
+        // as well as a sourcemap
+        test.ok(actualCompactMap, ' generates a source map for a compact file');
 
       var expectedSingle = grunt.file.read('expected/jquery.min.js'),
           actualSingle = grunt.file.read('actual/jquery.min.js'),
