@@ -44,6 +44,9 @@ grunt.initConfig({
 
       // Destination for sourcemap of minified JavaScript
       destMap: 'dist/js/all.js.map'
+
+      // Optional root for all relative URLs
+      srcRoot: 'some/lower/directory'
     },
 
     // Compact format is also accepted

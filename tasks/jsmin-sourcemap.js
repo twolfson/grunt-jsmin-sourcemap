@@ -19,7 +19,8 @@ module.exports = function (grunt) {
     var destFile = file.dest,
         retObj = jsmin({
           'input': input,
-          'dest': destFile
+          'dest': destFile,
+          'srcRoot': data.srcRoot
         });
 
     // Grab the minified code
