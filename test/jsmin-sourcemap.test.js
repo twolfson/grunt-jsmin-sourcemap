@@ -31,8 +31,8 @@ exports['jsmin-sourcemap'] = {
       var expectedCompact = grunt.file.read('expected/compact.min.js'),
           actualCompact = grunt.file.read('actual/compact.min.js'),
           actualCompactMap = grunt.file.read('actual/compact.min.js.map'),
-          compactMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/compact.min.js.map/,
-          compactMapDeclarativeExists = compactMapRegExp.test(actualCompact);
+          compactMapComment = '//@ sourceMappingURL=compact.min.js.map',
+          compactMapDeclarativeExists = actualCompact.indexOf(compactMapComment) > -1;
         // outputs proper minified code
         test.strictEqual(actualCompact, expectedCompact, ' properly minifies a compact file');
         // which points to the map file
@@ -43,8 +43,8 @@ exports['jsmin-sourcemap'] = {
       var expectedSingle = grunt.file.read('expected/jquery.min.js'),
           actualSingle = grunt.file.read('actual/jquery.min.js'),
           actualSingleMap = grunt.file.read('actual/jquery.js.map'),
-          singleMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/jquery.js.map/,
-          singleMapDeclarativeExists = singleMapRegExp.test(actualSingle);
+          singleMapComment = '//@ sourceMappingURL=jquery.js.map',
+          singleMapDeclarativeExists = actualSingle.indexOf(singleMapComment) > -1;
         // outputs proper minified code
         test.strictEqual(actualSingle, expectedSingle, ' properly minifies a single file');
         // which points to the map file
@@ -57,8 +57,8 @@ exports['jsmin-sourcemap'] = {
       var expectedMulti = grunt.file.read('expected/multi.min.js'),
           actualMulti = grunt.file.read('actual/multi.min.js'),
           actualMultiMap = grunt.file.read('actual/multi.js.map'),
-          multiMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/multi.js.map/,
-          multiMapDeclarativeExists = multiMapRegExp.test(actualMulti);
+          multiMapComment = '//@ sourceMappingURL=multi.js.map',
+          multiMapDeclarativeExists = actualMulti.indexOf(multiMapComment) > -1;
         // outputs proper minified code
         test.strictEqual(actualMulti, expectedMulti, ' properly minifies multiple files');
         // which points to the map file
