@@ -44,7 +44,10 @@ grunt.initConfig({
 
       // Destination for sourcemap of minified JavaScript
       destMap: 'dist/js/all.js.map'
-    }
+    },
+
+    // Compact format is also accepted
+    'dest/file.js': ['src/file1.js', 'src/file2.js']
   }
 });
 ```

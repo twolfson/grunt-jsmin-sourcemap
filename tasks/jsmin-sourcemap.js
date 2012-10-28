@@ -2,7 +2,8 @@ var jsmin = require('jsmin-sourcemap');
 module.exports = function (grunt) {
   grunt.registerMultiTask('jsmin-sourcemap', 'Generate minified JavaScript and sourcemap from files', function () {
     // Grab the files to minify
-    var file = this.data,
+    var file = this.file,
+        data = this.data,
         srcFile = file.src,
         srcFiles = grunt.file.expand(srcFile);
 
@@ -23,9 +24,8 @@ module.exports = function (grunt) {
     // Grab the minified code
     var code = retObj.code;
 
-    var destMap = file.destMap || destFile + ".map";
-
     // Append a sourceMappingURL to the code
+    var destMap = data.destMap || destFile + ".map";
     code = code + '\n//@ sourceMappingURL=' + destMap;
 
     // Write out the code and map
