@@ -28,11 +28,21 @@ exports['jsmin-sourcemap'] = {
   'jsmin-sourcemap': function (test) {
     test.expect(6);
 
-    // A single file (jquery.js)
-      // processed via JSMin (grunt jsmin-sourcemap:single)
-      var actualSingle = grunt.file.read('actual/jquery.min.js'),
-          expectedSingle = grunt.file.read('actual/jquery.min.js'),
-          expectedSingleMap = grunt.file.read('actual/jquery.js.map'),
+    // suite.addBatch({
+    //   // jquery.js
+    //   'A single file': {
+    //     // grunt jsmin-sourcemap:single
+    //     'processed via JSMin': {
+    //       'outputs proper minified code': true,
+    //       'which points to the map file': true,
+    //       'as well as a sourcemap': true
+    //     }
+    //   }
+    // });
+
+      var expectedSingle = grunt.file.read('expected/jquery.min.js'),
+          actualSingle = grunt.file.read('actual/jquery.min.js'),
+          actualSingleMap = grunt.file.read('actual/jquery.js.map'),
           singleMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/jquery.js.map/,
           singleMapDeclarativeExists = singleMapRegExp.test(actualSingle);
         // outputs proper minified code
@@ -40,13 +50,13 @@ exports['jsmin-sourcemap'] = {
         // which points to the map file
         test.ok(singleMapDeclarativeExists, ' points to the proper map location for the single file');
         // as well as a sourcemap
-        test.ok(expectedSingleMap, ' generates a source map for a single file');
+        test.ok(actualSingleMap, ' generates a source map for a single file');
 
     // Multiple files (jquery.js + underscore.js)
       // processed via JSMin (grunt jsmin-sourcemap:multi)
-      var actualMulti = grunt.file.read('actual/multi.min.js'),
-          expectedMulti = grunt.file.read('actual/multi.min.js'),
-          expectedMultiMap = grunt.file.read('actual/multi.js.map'),
+      var expectedMulti = grunt.file.read('expected/multi.min.js'),
+          actualMulti = grunt.file.read('actual/multi.min.js'),
+          actualMultiMap = grunt.file.read('actual/multi.js.map'),
           multiMapRegExp = /\/\/\s*@\s*sourceMappingURL\s*=\s*actual\/multi.js.map/,
           multiMapDeclarativeExists = multiMapRegExp.test(actualMulti);
         // outputs proper minified code
@@ -54,7 +64,7 @@ exports['jsmin-sourcemap'] = {
         // which points to the map file
         test.ok(multiMapDeclarativeExists, ' points to the proper map location for the multiple files');
         // as well as a sourcemap
-        test.ok(expectedMultiMap, ' generates a source map for multiple files');
+        test.ok(actualMultiMap, ' generates a source map for multiple files');
 
     test.done();
   }
