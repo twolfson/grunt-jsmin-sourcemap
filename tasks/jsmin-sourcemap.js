@@ -5,18 +5,20 @@ module.exports = function (grunt) {
     // Grab the files to minify
     var file = this.file,
         data = this.data,
+        cwd = data.cwd || '.',
         srcFile = file.src,
-        srcFiles = grunt.file.expand(srcFile);
+        srcFiles = grunt.file.expand({'cwd': cwd}, srcFile);
 
     // Map each file into a JSMin input
     var input = srcFiles.map(function (file) {
-      var code = grunt.file.read(file),
+      var filepath = path.join(cwd, file),
+          code = grunt.file.read(filepath),
           src = file;
       return {'code': code, 'src': src};
     });
 
     // Minify the input
-    var destFile = file.dest,
+    var destFile = path.join(cwd, file.dest),
         retObj = jsmin({
           'input': input,
           'dest': destFile,
@@ -26,9 +28,16 @@ module.exports = function (grunt) {
     // Grab the minified code
     var code = retObj.code;
 
+    // Collect our destMap, if it does not exist fallback to destFile + '.map'
+    var destMap = data.destMap;
+    if (destMap !== undefined) {
+      destMap = path.join(cwd, destMap);
+    } else {
+      destMap = destFile + ".map";
+    }
+
     // Append a sourceMappingURL to the code (trim off the first ../ since URL's don't need that)
-    var destMap = data.destMap || destFile + ".map",
-        relMapPath = path.relative(destFile, destMap);
+    var relMapPath = path.relative(destFile, destMap);
     relMapPath = relMapPath.replace('../', '');
     code = code + '\n//@ sourceMappingURL=' + relMapPath;
 
