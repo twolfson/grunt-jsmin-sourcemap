@@ -47,6 +47,10 @@ grunt.initConfig({
 
       // Optional root for all relative URLs
       srcRoot: 'some/lower/directory'
+
+      // Optional cwd to resolve from for all URLs
+      // Converts jquery.js -> some/higher/directory/jquery.js during lookup but mapping preserves jquery.js in map file
+      cwd: 'some/higher/directory'
     },
 
     // Compact format is also accepted
