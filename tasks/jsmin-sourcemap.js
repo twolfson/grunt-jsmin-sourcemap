@@ -17,28 +17,32 @@ module.exports = function (grunt) {
       return {'code': code, 'src': src};
     });
 
-    // Minify the input
+    // Grab the destFile and destMap paths, if it does not exist fallback to destFile + '.map'
     var destFile = path.join(cwd, file.dest),
-        retObj = jsmin({
-          'input': input,
-          'dest': destFile,
-          'srcRoot': data.srcRoot
-        });
-
-    // Grab the minified code
-    var code = retObj.code;
-
-    // Collect our destMap, if it does not exist fallback to destFile + '.map'
-    var destMap = data.destMap;
+        destMap = data.destMap;
     if (destMap !== undefined) {
       destMap = path.join(cwd, destMap);
     } else {
       destMap = destFile + ".map";
     }
 
-    // Append a sourceMappingURL to the code (trim off the first ../ since URL's don't need that)
-    var relMapPath = path.relative(destFile, destMap);
+    // Determine the relative dest and relative map path (trim off the first ../ since URL's don't need that)
+    var relDestPath = path.relative(destFile, destMap),
+        relMapPath = path.relative(destFile, destMap);
+    relDestPath = relDestPath.replace('../', '');
     relMapPath = relMapPath.replace('../', '');
+
+    // Minify the input
+    var retObj = jsmin({
+          'input': input,
+          'dest': relDestPath,
+          'srcRoot': data.srcRoot
+        });
+
+    // Grab the minified code
+    var code = retObj.code;
+
+    // Append a sourceMappingURL to the code
     code = code + '\n//@ sourceMappingURL=' + relMapPath;
 
     // Write out the code and map
