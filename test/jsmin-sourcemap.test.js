@@ -66,6 +66,20 @@ exports['jsmin-sourcemap'] = {
         // as well as a sourcemap
         test.ok(actualMultiMap, ' generates a source map for multiple files');
 
+    // Interpolated file paths
+    var expectedInterpolate = grunt.file.read('expected/jquery.min.js'),
+        actualInterpolate = grunt.file.read('actual/interpolate.min.js'),
+        actualInterpolateMap = grunt.file.read('actual/interpolate.js.map'),
+        interpolateMapComment = '//@ sourceMappingURL=interpolate.js.map',
+        interpolateMapDeclarativeExists = actualSingle.indexOf(interpolateMapComment) > -1;
+
+      // outputs proper minified code
+      test.strictEqual(actualInterpolate, expectedInterpolate, ' properly minifies a interpolated file');
+      // which points to the map file
+      test.ok(interpolateMapDeclarativeExists, ' points to the proper map location for the interpolated file');
+      // as well as a sourcemap
+      test.ok(actualInterpolateMap, ' generates a source map for at the interpolated location');
+
     test.done();
   }
 };
