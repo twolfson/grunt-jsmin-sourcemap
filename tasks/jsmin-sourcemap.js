@@ -31,15 +31,13 @@ module.exports = function (grunt) {
     }
 
     // Determine the relative dest and relative map path (trim off the first ../ since URL's don't need that)
-    var relDestPath = path.relative(destFile, destMap),
-        relMapPath = path.relative(destFile, destMap);
-    relDestPath = relDestPath.replace('../', '');
-    relMapPath = relMapPath.replace('../', '');
+    var relDestPath = path.relative(path.dirname(destMap), path.dirname(destFile)),
+        relMapPath = path.relative(path.dirname(destFile), path.dirname(destMap));
 
     // Minify the input
     var retObj = jsmin({
           'input': input,
-          'dest': relDestPath,
+          'dest': path.join(relDestPath, path.basename(destFile)),
           'srcRoot': data.srcRoot
         });
 
@@ -47,7 +45,7 @@ module.exports = function (grunt) {
     var code = retObj.code;
 
     // Append a sourceMappingURL to the code
-    code = code + '\n//@ sourceMappingURL=' + relMapPath;
+    code = code + '\n//@ sourceMappingURL=' + path.join(relMapPath, path.basename(destMap));
 
     // Write out the code and map
     grunt.file.write(destFile, code);
