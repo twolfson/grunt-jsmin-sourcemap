@@ -21,6 +21,10 @@ module.exports = function (grunt) {
     var destFile = path.join(cwd, file.dest),
         destMap = data.destMap;
     if (destMap !== undefined) {
+      // Interpolate the map via grunt.template
+      destMap = grunt.template.process(destMap);
+
+      // Join it together with the cwd
       destMap = path.join(cwd, destMap);
     } else {
       destMap = destFile + ".map";
