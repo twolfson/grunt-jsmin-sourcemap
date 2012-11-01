@@ -72,9 +72,7 @@ exports['jsmin-sourcemap'] = {
         actualInterpolate = grunt.file.read('actual/interpolate.' + interpolationStr + '.min.js'),
         actualInterpolateMap = grunt.file.read('actual/interpolate.' + interpolationStr + '.js.map'),
         interpolateMapComment = '//@ sourceMappingURL=interpolate.' + interpolationStr + '.js.map',
-c = console.log('\n', interpolateMapComment, '//@ sourceMappingURL=interpolate.grunt-jsmin-sourcemap-1.5.0.js.map'),
-
-        interpolateMapDeclarativeExists = actualSingle.indexOf(interpolateMapComment) > -1;
+        interpolateMapDeclarativeExists = actualInterpolate.indexOf(interpolateMapComment) > -1;
 
       // outputs proper minified code
       test.strictEqual(actualInterpolate, expectedInterpolate, ' properly minifies a interpolated file');
