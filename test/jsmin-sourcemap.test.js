@@ -38,7 +38,7 @@ exports['jsmin-sourcemap'] = {
         // which points to the map file
         test.ok(compactMapDeclarativeExists, ' points to the proper map location for the compact file');
         // and the map file points back to the minified code
-        test.ok(actualCompactMap.indexOf('actual/compact.min.js') > -1, ' points back to minified compact file');
+        test.ok(actualCompactMap.indexOf('compact.min.js') > -1, ' points back to minified compact file');
         // as well as a sourcemap
         test.ok(actualCompactMap, ' generates a source map for a compact file');
 
