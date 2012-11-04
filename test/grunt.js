@@ -7,8 +7,8 @@ module.exports = function (grunt) {
       'version': '1.5.0'
     },
     'jsmin-sourcemap': {
-      // // Compact format -- https://github.com/gruntjs/grunt/blob/master/docs/api.md#thisfile--grunttaskcurrentfile
-      // 'actual/compact.min.js': 'test_files/jquery.js',
+      // Compact format -- https://github.com/gruntjs/grunt/blob/master/docs/api.md#thisfile--grunttaskcurrentfile
+      'actual/compact.min.js': 'test_files/jquery.js',
       // // Normal format
       // single: {
       //   src: 'test_files/jquery.js',

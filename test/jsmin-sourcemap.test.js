@@ -26,7 +26,7 @@ exports['jsmin-sourcemap'] = {
     done();
   },
   'jsmin-sourcemap': function (test) {
-    test.expect(15);
+    test.expect(16);
 
       var expectedCompact = grunt.file.read('expected/compact.min.js'),
           actualCompact = grunt.file.read('actual/compact.min.js'),
@@ -37,6 +37,8 @@ exports['jsmin-sourcemap'] = {
         test.strictEqual(actualCompact, expectedCompact, ' properly minifies a compact file');
         // which points to the map file
         test.ok(compactMapDeclarativeExists, ' points to the proper map location for the compact file');
+        // and the map file points back to the minified code
+        test.ok(actualCompactMap.indexOf('actual/compact.min.js') > -1, ' points back to minified compact file');
         // as well as a sourcemap
         test.ok(actualCompactMap, ' generates a source map for a compact file');
 
