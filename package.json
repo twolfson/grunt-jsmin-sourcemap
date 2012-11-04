@@ -1,7 +1,7 @@
 {
   "name": "grunt-jsmin-sourcemap",
   "description": "Grunt task for JSMin and sourcemap",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "homepage": "https://github.com/twolfson/grunt-jsmin-sourcemap",
   "author": {
     "name": "Todd Wolfson",
@@ -41,6 +41,7 @@
     "grunt",
     "jsmin",
     "sourcemap",
+    "source map",
     "minify"
   ]
 }
