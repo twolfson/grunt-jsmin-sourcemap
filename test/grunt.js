@@ -7,8 +7,8 @@ module.exports = function (grunt) {
       'version': '1.5.0'
     },
     'jsmin-sourcemap': {
-      // Compact format -- https://github.com/gruntjs/grunt/blob/master/docs/api.md#thisfile--grunttaskcurrentfile
-      'actual/compact.min.js': 'test_files/jquery.js',
+      // // Compact format -- https://github.com/gruntjs/grunt/blob/master/docs/api.md#thisfile--grunttaskcurrentfile
+      // 'actual/compact.min.js': 'test_files/jquery.js',
       // // Normal format
       // single: {
       //   src: 'test_files/jquery.js',
@@ -26,10 +26,16 @@ module.exports = function (grunt) {
       //   dest: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.min.js',
       //   destMap: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.js.map'
       // },
-      // Nested files
-      nested: {
+      // // Nested files
+      // nested: {
+      //   src: 'test_files/nested-src/*.js',
+      //   dest: 'actual/nested-dest/nested.min.js'
+      // },
+      // Different dests
+      differentDest: {
         src: 'test_files/nested-src/*.js',
-        dest: 'actual/nested-dest/nested.min.js'
+        dest: 'actual/different-dest-js/differentDest.min.js',
+        destMap: 'actual/different-dest-map/differentDest.min.js.map'
       }
     },
     test: {

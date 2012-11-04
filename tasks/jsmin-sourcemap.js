@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         relMapPath = path.relative(destFile, destMap);
     relDestPath = relDestPath.replace('../', '');
     relMapPath = relMapPath.replace('../', '');
-
+console.log(destMap);
     // Minify the input
     var retObj = jsmin({
           'input': input,
