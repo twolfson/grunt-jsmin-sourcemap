@@ -20,11 +20,16 @@ module.exports = function (grunt) {
       //   dest: 'actual/multi.min.js',
       //   destMap: 'actual/multi.js.map'
       // },
-      // Package specific interpolation
-      interpolation: {
-        src: 'test_files/jquery.js',
-        dest: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.min.js',
-        destMap: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.js.map'
+      // // Package specific interpolation
+      // interpolation: {
+      //   src: 'test_files/jquery.js',
+      //   dest: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.min.js',
+      //   destMap: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.js.map'
+      // },
+      // Nested files
+      nested: {
+        src: 'test_files/nested-src/*.js',
+        dest: 'actual/nested-dest/nested.min.js'
       }
     },
     test: {
