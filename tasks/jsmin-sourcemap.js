@@ -33,7 +33,7 @@ module.exports = function (grunt) {
     // Determine the relative dest and relative map path (trim off the first ../ since URL's don't need that)
     var relDestPath = path.relative(path.dirname(destMap), path.dirname(destFile)),
         relMapPath = path.relative(path.dirname(destFile), path.dirname(destMap));
-
+console.log('zzzzzzzzzzz', relDestPath, relMapPath, path.join(relDestPath, path.basename(destFile)), path.join(relMapPath, path.basename(destMap)));
     // Minify the input
     var retObj = jsmin({
           'input': input,

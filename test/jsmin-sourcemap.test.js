@@ -25,8 +25,8 @@ exports['jsmin-sourcemap'] = {
     // setup here
     done();
   },
-  'jsmin-sourcemap': function (test) {
-    test.expect(20);
+  'jsmin-sourcemap compact': function (test) {
+    test.expect(4);
 
       var expectedCompact = grunt.file.read('expected/compact.min.js'),
           actualCompact = grunt.file.read('actual/compact.min.js'),
@@ -42,6 +42,11 @@ exports['jsmin-sourcemap'] = {
         // as well as a sourcemap
         test.ok(actualCompactMap, ' generates a source map for a compact file');
 
+    test.done();
+  },
+  'jsmin-sourcemap single': function (test) {
+    test.expect(3);
+
       var expectedSingle = grunt.file.read('expected/jquery.min.js'),
           actualSingle = grunt.file.read('actual/jquery.min.js'),
           actualSingleMap = grunt.file.read('actual/jquery.js.map'),
@@ -54,6 +59,10 @@ exports['jsmin-sourcemap'] = {
         // as well as a sourcemap
         test.ok(actualSingleMap, ' generates a source map for a single file');
 
+    test.done();
+  },
+  'jsmin-sourcemap multi': function (test) {
+    test.expect(3);
     // Multiple files (jquery.js + underscore.js)
       // processed via JSMin (grunt jsmin-sourcemap:multi)
       var expectedMulti = grunt.file.read('expected/multi.min.js'),
@@ -68,6 +77,10 @@ exports['jsmin-sourcemap'] = {
         // as well as a sourcemap
         test.ok(actualMultiMap, ' generates a source map for multiple files');
 
+    test.done();
+  },
+  'jsmin-sourcemap interpolate': function (test) {
+    test.expect(3);
     // Interpolated file paths
     var interpolationStr = 'grunt-jsmin-sourcemap-1.5.0',
         expectedInterpolate = grunt.file.read('expected/interpolate.' + interpolationStr + '.min.js'),
@@ -83,6 +96,11 @@ exports['jsmin-sourcemap'] = {
       // as well as a sourcemap
       test.ok(actualInterpolateMap, ' generates a source map for at the interpolated location');
 
+    test.done();
+  },
+  'jsmin-sourcemap nested': function (test) {
+    test.expect(3);
+
     // Multiple nested files
       // processed via JSMin
       var expectedNested = grunt.file.read('expected/nested-dest/nested.min.js'),
@@ -96,6 +114,11 @@ exports['jsmin-sourcemap'] = {
         test.ok(nestedMapDeclarativeExists, ' points to the proper map location for the nested files');
         // as well as a sourcemap
         test.ok(actualNestedMap, ' generates a source map for nested files');
+
+    test.done();
+  },
+  'jsmin-sourcemap differentDest': function (test) {
+    test.expect(4);
 
     // Different dest files
       // processed via JSMin
