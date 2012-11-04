@@ -26,18 +26,18 @@ module.exports = function (grunt) {
         // dest: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.min.js',
         // destMap: 'actual/interpolate.<%= pkg.name %>-<%= pkg.version %>.js.map'
       // },
-      // Nested files
-      nested: {
-        // Linux did not perform natural order sorting on first run
-        // src: 'test_files/nested-src/*.js',
-        src: ['test_files/nested-src/1.js', 'test_files/nested-src/3.js', 'test_files/nested-src/2.js'],
-        dest: 'actual/nested-dest/nested.min.js'
+      // // Nested files
+      // nested: {
+        // // Linux did not perform natural order sorting on first run
+        // // src: 'test_files/nested-src/*.js',
+        // src: ['test_files/nested-src/1.js', 'test_files/nested-src/3.js', 'test_files/nested-src/2.js'],
+        // dest: 'actual/nested-dest/nested.min.js'
       // },
-      // // Different dests
-      // differentDest: {
-        // src: 'test_files/nested-src/*.js',
-        // dest: 'actual/different-dest-js/differentDest.min.js',
-        // destMap: 'actual/different-dest-map/differentDest.min.js.map'
+      // Different dests
+      differentDest: {
+        src: ['test_files/nested-src/1.js', 'test_files/nested-src/3.js', 'test_files/nested-src/2.js'],
+        dest: 'actual/different-dest-js/differentDest.min.js',
+        destMap: 'actual/different-dest-map/differentDest.min.js.map'
       }
     },
     test: {

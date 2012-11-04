@@ -98,45 +98,43 @@ exports['jsmin-sourcemap'] = {
 
     // test.done();
   // },
-  'jsmin-sourcemap nested': function (test) {
-    test.expect(3);
+  // 'jsmin-sourcemap nested': function (test) {
+    // test.expect(3);
 
-    // Multiple nested files
-      // processed via JSMin
-      var expectedNested = grunt.file.read('expected/nested-dest/nested.min.js'),
-          actualNested = grunt.file.read('actual/nested-dest/nested.min.js'),
-          actualNestedMap = grunt.file.read('actual/nested-dest/nested.min.js.map'),
-          nestedMapComment = '//@ sourceMappingURL=nested.min.js.map',
-          nestedMapDeclarativeExists = actualNested.indexOf(nestedMapComment) > -1;
-console.log('\nexpected', expectedNested);
-console.log('actual', actualNested);
-        // outputs proper minified code
-        test.strictEqual(actualNested, expectedNested, ' properly minifies nested files');
-        // which points to the map file
-        test.ok(nestedMapDeclarativeExists, ' points to the proper map location for the nested files');
-        // as well as a sourcemap
-        test.ok(actualNestedMap, ' generates a source map for nested files');
-    test.done();
-  },
-  // 'jsmin-sourcemap differentDest': function (test) {
-    // test.expect(4);
-
-    // // Different dest files
+    // // Multiple nested files
       // // processed via JSMin
-      // var expectedDifferentDest = grunt.file.read('expected/different-dest-js/differentDest.min.js'),
-          // actualDifferentDest = grunt.file.read('actual/different-dest-js/differentDest.min.js'),
-          // actualDifferentDestMap = grunt.file.read('actual/different-dest-map/differentDest.min.js.map'),
-          // differentDestMapComment = '//@ sourceMappingURL=../different-dest-map/differentDest.min.js.map',
-          // differentDestMapDeclarativeExists = actualDifferentDest.indexOf(differentDestMapComment) > -1;
+      // var expectedNested = grunt.file.read('expected/nested-dest/nested.min.js'),
+          // actualNested = grunt.file.read('actual/nested-dest/nested.min.js'),
+          // actualNestedMap = grunt.file.read('actual/nested-dest/nested.min.js.map'),
+          // nestedMapComment = '//@ sourceMappingURL=nested.min.js.map',
+          // nestedMapDeclarativeExists = actualNested.indexOf(nestedMapComment) > -1;
         // // outputs proper minified code
-        // test.strictEqual(actualDifferentDest, expectedDifferentDest, ' properly minifies differentDest files');
+        // test.strictEqual(actualNested, expectedNested, ' properly minifies nested files');
         // // which points to the map file
-        // test.ok(differentDestMapDeclarativeExists, ' points to the proper map location for the differentDest files');
-        // // and the map file points back to the minified code
-        // test.ok(actualDifferentDestMap.indexOf('../different-dest-js/differentDest.min.js') > -1, ' points back to minified differentDest file');
+        // test.ok(nestedMapDeclarativeExists, ' points to the proper map location for the nested files');
         // // as well as a sourcemap
-        // test.ok(actualDifferentDestMap, ' generates a source map for differentDest files');
-
+        // test.ok(actualNestedMap, ' generates a source map for nested files');
     // test.done();
-  // }
+  // },
+  'jsmin-sourcemap differentDest': function (test) {
+    test.expect(4);
+
+    // Different dest files
+      // processed via JSMin
+      var expectedDifferentDest = grunt.file.read('expected/different-dest-js/differentDest.min.js'),
+          actualDifferentDest = grunt.file.read('actual/different-dest-js/differentDest.min.js'),
+          actualDifferentDestMap = grunt.file.read('actual/different-dest-map/differentDest.min.js.map'),
+          differentDestMapComment = '//@ sourceMappingURL=../different-dest-map/differentDest.min.js.map',
+          differentDestMapDeclarativeExists = actualDifferentDest.indexOf(differentDestMapComment) > -1;
+        // outputs proper minified code
+        test.strictEqual(actualDifferentDest, expectedDifferentDest, ' properly minifies differentDest files');
+        // which points to the map file
+        test.ok(differentDestMapDeclarativeExists, ' points to the proper map location for the differentDest files');
+        // and the map file points back to the minified code
+        test.ok(actualDifferentDestMap.indexOf('../different-dest-js/differentDest.min.js') > -1, ' points back to minified differentDest file');
+        // as well as a sourcemap
+        test.ok(actualDifferentDestMap, ' generates a source map for differentDest files');
+
+    test.done();
+  }
 };
