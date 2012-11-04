@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     }
 
     // Determine the relative dest and relative map path (trim off the first ../ since URL's don't need that)
-    var relDestPath = path.relative(destFile, destMap),
+    var relDestPath = path.relative(destMap, destFile),
         relMapPath = path.relative(destFile, destMap);
     relDestPath = relDestPath.replace('../', '');
     relMapPath = relMapPath.replace('../', '');
