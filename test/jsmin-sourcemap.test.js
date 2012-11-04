@@ -26,7 +26,7 @@ exports['jsmin-sourcemap'] = {
     done();
   },
   'jsmin-sourcemap': function (test) {
-    test.expect(12);
+    test.expect(15);
 
       var expectedCompact = grunt.file.read('expected/compact.min.js'),
           actualCompact = grunt.file.read('actual/compact.min.js'),
@@ -80,6 +80,20 @@ exports['jsmin-sourcemap'] = {
       test.ok(interpolateMapDeclarativeExists, ' points to the proper map location for the interpolated file');
       // as well as a sourcemap
       test.ok(actualInterpolateMap, ' generates a source map for at the interpolated location');
+
+    // Multiple nested files
+      // processed via JSMin
+      var expectedNested = grunt.file.read('expected/nested-dest/nested.min.js'),
+          actualNested = grunt.file.read('actual/nested-dest/nested.min.js'),
+          actualNestedMap = grunt.file.read('actual/nested-dest/nested.min.js.map'),
+          nestedMapComment = '//@ sourceMappingURL=nested.min.js.map',
+          nestedMapDeclarativeExists = actualNested.indexOf(nestedMapComment) > -1;
+        // outputs proper minified code
+        test.strictEqual(actualNested, expectedNested, ' properly minifies nested files');
+        // which points to the map file
+        test.ok(nestedMapDeclarativeExists, ' points to the proper map location for the nested files');
+        // as well as a sourcemap
+        test.ok(actualNestedMap, ' generates a source map for nested files');
 
     test.done();
   }
