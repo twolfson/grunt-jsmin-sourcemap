@@ -1,7 +1,7 @@
 {
   "name": "grunt-jsmin-sourcemap",
   "description": "Grunt task for JSMin and sourcemap",
-  "version": "1.5.6",
+  "version": "1.6.0",
   "homepage": "https://github.com/twolfson/grunt-jsmin-sourcemap",
   "author": {
     "name": "Todd Wolfson",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "grunt": "~0.3.12",
-    "jsmin-sourcemap": "~0.12.0"
+    "jsmin-sourcemap": "~0.14.0"
   },
   "devDependencies": {
     "grunt": "~0.3.12"
