@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         relDestDirPath = path.relative(destMapDir, destFileDir),
         relMapPath = path.join(relMapDirPath, destMapName),
         relDestPath = path.join(relDestDirPath, destFileName);
-     
+
     // Convert any '\\'s to '/'s (since we are URL based)
     relMapPath = relMapPath.replace(/\\/g, '/');
     relDestPath = relDestPath.replace(/\\/g, '/');
@@ -60,5 +60,11 @@ module.exports = function (grunt) {
     // Write out the code and map
     grunt.file.write(destFile, code);
     grunt.file.write(destMap, retObj.sourcemap);
+
+    // Fail task if errors were logged.
+    if (this.errorCount) { return false; }
+
+    // Otherwise, print a success message.
+    grunt.log.writeln('Files "' + destFile + '", "' + destMap + '" created.');
   });
 };
