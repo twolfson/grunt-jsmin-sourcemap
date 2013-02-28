@@ -27,10 +27,9 @@
     "node": ">=0.6"
   },
   "scripts": {
-    "test": "grunt --base ./test/ --config ./test/grunt.js"
+    "test": "cd test && grunt"
   },
   "dependencies": {
-    "grunt": "~0.3.12",
     "jsmin-sourcemap": "~0.14.0"
   },
   "devDependencies": {
