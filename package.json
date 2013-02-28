@@ -32,8 +32,12 @@
   "dependencies": {
     "jsmin-sourcemap": "~0.14.0"
   },
-  "devDependencies": {
+  "_devDependencies": {
     "grunt": "~0.3.12"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.1.2"
   },
   "keywords": [
     "gruntplugin",
