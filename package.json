@@ -30,7 +30,8 @@
     "test": "cd test && grunt"
   },
   "dependencies": {
-    "jsmin-sourcemap": "~0.14.0"
+    "jsmin-sourcemap": "~0.14.0",
+    "grunt-retro": "~0.2.1"
   },
   "_devDependencies": {
     "grunt": "~0.3.12"

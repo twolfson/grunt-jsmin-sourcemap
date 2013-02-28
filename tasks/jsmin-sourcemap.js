@@ -1,6 +1,11 @@
 var jsmin = require('jsmin-sourcemap'),
-    path = require('path');
+    path = require('path'),
+    gruntRetro = require('grunt-retro');
 module.exports = function (grunt) {
+  // Load and bind grunt-retro
+  grunt = gruntRetro(grunt);
+
+  // Define the jsmin-sourcemap task
   grunt.registerMultiTask('jsmin-sourcemap', 'Generate minified JavaScript and sourcemap from files', function () {
     // Grab the files to minify
     var file = this.file,
