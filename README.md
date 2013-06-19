@@ -1,4 +1,4 @@
-# grunt-jsmin-sourcemap
+# grunt-jsmin-sourcemap [![Donate on Gittip](http://badgr.co/gittip/twolfson.png)](https://www.gittip.com/twolfson/)
 
 Grunt task for JSMin and source maps.
 
