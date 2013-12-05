@@ -6,6 +6,10 @@ node_js:
   - "0.11"
   - "0.10"
   - "0.8"
+matrix:
+  allow_failures:
+    - node_js: "0.11"
+
 before_script:
   - ./test/install_deps.sh # Install grunt and grunt-cli
 script:

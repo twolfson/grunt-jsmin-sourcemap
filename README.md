@@ -71,5 +71,12 @@ Support this project and [others by twolfson][gittip] via [gittip][].
 [gittip]: https://www.gittip.com/twolfson/
 
 ## License
-Copyright (c) 2012 Todd Wolfson
-Licensed under the MIT license.
+As of Dec 05 2013, Todd Wolfson has released this repository and its contents to the public domain.
+
+It has been released under the [UNLICENSE][].
+
+[UNLICENSE]: UNLICENSE
+
+Previous to this, it was licensed under the [MIT license][].
+
+[MIT license]: https://github.com/twolfson/grunt-jsmin-sourcemap/blob/4ebd0957a440bc97cb55e8178c3f0d7cfaf6ee43/README.md#license
