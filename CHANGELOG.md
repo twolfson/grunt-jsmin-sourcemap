@@ -1,4 +1,6 @@
 # grunt-jsmin-sourcemap changelog
+1.8.2 - Moved to UNLICENSE
+
 1.8.1 - Fixed permissions for bin script
 
 1.8.0 - Upgraded to `grunt-retro@~0.6.4`. Fixes #15
