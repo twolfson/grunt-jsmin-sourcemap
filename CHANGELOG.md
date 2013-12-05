@@ -1,4 +1,6 @@
 # grunt-jsmin-sourcemap changelog
+1.8.3 - Fix for failing tests on Travis CI
+
 1.8.2 - Moved to UNLICENSE
 
 1.8.1 - Fixed permissions for bin script
