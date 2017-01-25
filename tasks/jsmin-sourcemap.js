@@ -12,19 +12,21 @@ module.exports = function (grunt) {
         data = this.data,
         cwd = data.cwd || '.',
         srcFile = file.src,
+        destFile = path.join(cwd, file.dest),
         srcFiles = grunt.file.expand({'cwd': cwd}, srcFile);
 
     // Map each file into a JSMin input
     var input = srcFiles.map(function (file) {
       var filepath = path.join(cwd, file),
           code = grunt.file.read(filepath),
-          src = file;
+          rel_path = path.relative(path.dirname(destFile), path.dirname(file)),
+          src = path.join(rel_path, path.basename(file));
+
       return {'code': code, 'src': src};
     });
 
     // Grab the destFile and destMap paths, if it does not exist fallback to destFile + '.map'
-    var destFile = path.join(cwd, file.dest),
-        destMap = data.destMap;
+    var destMap = data.destMap;
     if (destMap !== undefined) {
       // Interpolate the map via grunt.template
       destMap = grunt.template.process(destMap);
